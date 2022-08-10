@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.miwok;
+package com.xar.lore;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -25,29 +25,19 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.android.miwok.R;
+
 import java.util.ArrayList;
 
 // import android.support.v7.app.AppCompatActivity;
 
-public class PhrasesActivity extends AppCompatActivity {
+public class ElectocracyActivity extends AppCompatActivity {
 
     /** Handles playback of all the sound files */
     private MediaPlayer mMediaPlayer;
 
     /** Handles audio focus when playing a sound file */
     private AudioManager mAudioManager;
-
-    /**
-     * This listener gets triggered when the {@link MediaPlayer} has completed
-     * playing the audio file.
-     */
-    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            // Now that the sound file has finished playing, release the media player resources.
-            releaseMediaPlayer();
-        }
-    };
 
     /**
      * This listener gets triggered whenever the audio focus changes
@@ -78,6 +68,18 @@ public class PhrasesActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * This listener gets triggered when the {@link MediaPlayer} has completed
+     * playing the audio file.
+     */
+    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            // Now that the sound file has finished playing, release the media player resources.
+            releaseMediaPlayer();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,30 +90,30 @@ public class PhrasesActivity extends AppCompatActivity {
 
         // Create a list of words
         final ArrayList<Word> words = new ArrayList<Word>();
-        words.add(new Word(R.string.phrase_where_are_you_going,
-                R.string.miwok_phrase_where_are_you_going, R.raw.phrase_where_are_you_going));
-        words.add(new Word(R.string.phrase_what_is_your_name,
-                R.string.miwok_phrase_what_is_your_name, R.raw.phrase_what_is_your_name));
-        words.add(new Word(R.string.phrase_my_name_is,
-                R.string.miwok_phrase_my_name_is, R.raw.phrase_my_name_is));
-        words.add(new Word(R.string.phrase_how_are_you_feeling,
-                R.string.miwok_phrase_how_are_you_feeling, R.raw.phrase_how_are_you_feeling));
-        words.add(new Word(R.string.phrase_im_feeling_good,
-                R.string.miwok_phrase_im_feeling_good, R.raw.phrase_im_feeling_good));
-        words.add(new Word(R.string.phrase_are_you_coming,
-                R.string.miwok_phrase_are_you_coming, R.raw.phrase_are_you_coming));
-        words.add(new Word(R.string.phrase_yes_im_coming,
-                R.string.miwok_phrase_yes_im_coming, R.raw.phrase_yes_im_coming));
-        words.add(new Word(R.string.phrase_im_coming,
-                R.string.miwok_phrase_im_coming, R.raw.phrase_im_coming));
-        words.add(new Word(R.string.phrase_lets_go,
-                R.string.miwok_phrase_lets_go, R.raw.phrase_lets_go));
-        words.add(new Word(R.string.phrase_come_here,
-                R.string.miwok_phrase_come_here, R.raw.phrase_come_here));
+        words.add(new Word(R.string.number_one, R.string.miwok_number_one,
+                R.drawable.number_one, R.raw.number_one));
+        words.add(new Word(R.string.number_two, R.string.miwok_number_two,
+                R.drawable.number_two, R.raw.number_two));
+        words.add(new Word(R.string.number_three, R.string.miwok_number_three,
+                R.drawable.number_three, R.raw.number_three));
+        words.add(new Word(R.string.number_four, R.string.miwok_number_four,
+                R.drawable.number_four, R.raw.number_four));
+        words.add(new Word(R.string.number_five, R.string.miwok_number_five,
+                R.drawable.number_five, R.raw.number_five));
+        words.add(new Word(R.string.number_six, R.string.miwok_number_six,
+                R.drawable.number_six, R.raw.number_six));
+        words.add(new Word(R.string.number_seven, R.string.miwok_number_seven,
+                R.drawable.number_seven, R.raw.number_seven));
+        words.add(new Word(R.string.number_eight, R.string.miwok_number_eight,
+                R.drawable.number_eight, R.raw.number_eight));
+        words.add(new Word(R.string.number_nine, R.string.miwok_number_nine,
+                R.drawable.number_nine, R.raw.number_nine));
+        words.add(new Word(R.string.number_ten, R.string.miwok_number_ten,
+                R.drawable.number_ten, R.raw.number_ten));
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
-        WordAdapter adapter = new WordAdapter(this, words, R.color.category_phrases);
+        WordAdapter adapter = new WordAdapter(this, words, R.color.category_numbers);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
@@ -144,7 +146,7 @@ public class PhrasesActivity extends AppCompatActivity {
 
                     // Create and setup the {@link MediaPlayer} for the audio resource associated
                     // with the current word
-                    mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getAudioResourceId());
+                    mMediaPlayer = MediaPlayer.create(ElectocracyActivity.this, word.getAudioResourceId());
 
                     // Start the audio file
                     mMediaPlayer.start();

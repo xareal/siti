@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "910408589042",
+    "firebase_url": "https://lore-d9ced-default-rtdb.firebaseio.com",
+    "project_id": "lore-d9ced",
+    "storage_bucket": "lore-d9ced.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910408589042:android:49bf5d8ce909821277fa6b",
+        "android_client_info": {
+          "package_name": "com.xar.lore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910408589042-n7e68udp6890tg391j7i5huqkfbc0t88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnUcPLP__7surF7X-5ylXCKHkT0ZBhdU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910408589042-n7e68udp6890tg391j7i5huqkfbc0t88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

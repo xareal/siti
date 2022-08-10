@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.miwok;
+package com.xar.lore;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +22,8 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.android.miwok.R;
 
 // import android.support.v7.app.AppCompatActivity;
 
@@ -42,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
             // The code in this method will be executed when the numbers category is clicked on.
             @Override
             public void onClick(View view) {
-                // Create a new intent to open the {@link NumbersActivity}
-                Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
+                // Create a new intent to open the {@link ElectocracyActivity}
+                Intent numbersIntent = new Intent(MainActivity.this, ElectocracyActivity.class);
 
                 // Start the new activity
                 startActivity(numbersIntent);
@@ -58,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
             // The code in this method will be executed when the family category is clicked on.
             @Override
             public void onClick(View view) {
-                // Create a new intent to open the {@link FamilyActivity}
-                Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
+                // Create a new intent to open the {@link MonarchyActivity}
+                Intent familyIntent = new Intent(MainActivity.this, MonarchyActivity.class);
 
                 // Start the new activity
                 startActivity(familyIntent);
@@ -74,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
             // The code in this method will be executed when the colors category is clicked on.
             @Override
             public void onClick(View view) {
-                // Create a new intent to open the {@link ColorsActivity}
-                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
+                // Create a new intent to open the {@link DemocracyActivity}
+                Intent colorsIntent = new Intent(MainActivity.this, DemocracyActivity.class);
 
                 // Start the new activity
                 startActivity(colorsIntent);
@@ -90,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
             // The code in this method will be executed when the phrases category is clicked on.
             @Override
             public void onClick(View view) {
-                // Create a new intent to open the {@link PhrasesActivity}
-                Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
+                // Create a new intent to open the {@link RepublicActivity}
+                Intent phrasesIntent = new Intent(MainActivity.this, RepublicActivity.class);
 
                 // Start the new activity
                 startActivity(phrasesIntent);

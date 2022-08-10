@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.miwok;
+package com.xar.lore;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -25,11 +25,13 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.android.miwok.R;
+
 import java.util.ArrayList;
 
 // import android.support.v7.app.AppCompatActivity;
 
-public class FamilyActivity extends AppCompatActivity {
+public class MonarchyActivity extends AppCompatActivity {
 
     /** Handles playback of all the sound files */
     private MediaPlayer mMediaPlayer;
@@ -144,7 +146,7 @@ public class FamilyActivity extends AppCompatActivity {
 
                     // Create and setup the {@link MediaPlayer} for the audio resource associated
                     // with the current word
-                    mMediaPlayer = MediaPlayer.create(FamilyActivity.this, word.getAudioResourceId());
+                    mMediaPlayer = MediaPlayer.create(MonarchyActivity.this, word.getAudioResourceId());
 
                     // Start the audio file
                     mMediaPlayer.start();
