@@ -22,6 +22,10 @@
     android:background="@color/tan_background"
     android:minHeight="@dimen/list_item_height">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <!--
     <ImageView
         android:id="@+id/image"
         android:layout_width="@dimen/list_item_height"
@@ -68,4 +72,6 @@
             android:layout_marginRight="16dp"
             android:src="@drawable/ic_play_arrow" />
     </RelativeLayout>
+
+    -->
 </RelativeLayout>

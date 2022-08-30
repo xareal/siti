@@ -14,7 +14,9 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.miwok">
+    package="com.xar.lore">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -30,17 +32,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.xar.lore.ElectocracyActivity"
-            android:label="@string/category_numbers" />
+            android:name="com.xar.lore.groups.ElectocracyActivity"
+            android:label="@string/category_electocracy" />
         <activity
-            android:name="com.xar.lore.MonarchyActivity"
-            android:label="@string/category_family" />
+            android:name="com.xar.lore.groups.MonarchyActivity"
+            android:label="@string/category_monarchy" />
         <activity
-            android:name="com.xar.lore.DemocracyActivity"
-            android:label="@string/category_colors" />
+            android:name="com.xar.lore.groups.DemocracyActivity"
+            android:label="@string/category_democracy" />
         <activity
-            android:name="com.xar.lore.RepublicActivity"
-            android:label="@string/category_phrases" />
+            android:name="com.xar.lore.groups.RepublicActivity"
+            android:label="@string/category_republic" />
     </application>
 
 </manifest>

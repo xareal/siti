@@ -25,6 +25,10 @@ platform :android do
   lane :beta do
     gradle(task: "clean assembleRelease")
     crashlytics
+
+    get_certificates           # invokes cert
+    get_provisioning_profile   # invokes sigh
+    build_app
   
     # sh "your_script.sh"
     # You can also use other beta testing services here
@@ -38,11 +42,11 @@ platform :android do
 
   desc "App distribute"
     lane :distribute do
-        build_android_app(...)
+        #build_android_app(...)
         # build_android_app is a built-in fastlane action.
         firebase_app_distribution(
-            app: "1:123456789:android:abcd1234",
-            testers: "tester1@company.com, tester2@company.com",
+            app: "1:910408589042:android:49bf5d8ce909821277fa6b",
+            testers: "adhikarisagar.sa@gmail.com",
             release_notes: "Lots of amazing new features to test out!"
         )
   end

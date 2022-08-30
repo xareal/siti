@@ -23,7 +23,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.android.miwok.R;
+import com.xar.lore.groups.DemocracyActivity;
+import com.xar.lore.groups.ElectocracyActivity;
+import com.xar.lore.groups.MonarchyActivity;
+import com.xar.lore.groups.RepublicActivity;
 
 // import android.support.v7.app.AppCompatActivity;
 
@@ -36,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        // Find the View that shows the numbers category
-        TextView numbers = (TextView) findViewById(R.id.numbers);
+        // Find the View that shows the electocracy category
+        TextView electocracy = findViewById(R.id.electocracy);
 
         // Set a click listener on that View
-        numbers.setOnClickListener(new OnClickListener() {
-            // The code in this method will be executed when the numbers category is clicked on.
+        electocracy.setOnClickListener(new OnClickListener() {
+            // The code in this method will be executed when the electocracy category is clicked on.
             @Override
             public void onClick(View view) {
                 // Create a new intent to open the {@link ElectocracyActivity}
@@ -52,28 +55,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Find the View that shows the family category
-        TextView family = (TextView) findViewById(R.id.family);
+        // Find the View that shows the monarchy category
+        TextView family = findViewById(R.id.monarchy);
 
         // Set a click listener on that View
-        family.setOnClickListener(new OnClickListener() {
-            // The code in this method will be executed when the family category is clicked on.
-            @Override
-            public void onClick(View view) {
-                // Create a new intent to open the {@link MonarchyActivity}
-                Intent familyIntent = new Intent(MainActivity.this, MonarchyActivity.class);
+        // The code in this method will be executed when the monarchy category is clicked on.
+        family.setOnClickListener(view -> {
+            // Create a new intent to open the {@link MonarchyActivity}
+            Intent familyIntent = new Intent(MainActivity.this, MonarchyActivity.class);
 
-                // Start the new activity
-                startActivity(familyIntent);
-            }
+            // Start the new activity
+            startActivity(familyIntent);
         });
 
-        // Find the View that shows the colors category
-        TextView colors = (TextView) findViewById(R.id.colors);
+        // Find the View that shows the democracy category
+        TextView democracy = findViewById(R.id.democracy);
 
         // Set a click listener on that View
-        colors.setOnClickListener(new OnClickListener() {
-            // The code in this method will be executed when the colors category is clicked on.
+        democracy.setOnClickListener(new OnClickListener() {
+            // The code in this method will be executed when the democracy category is clicked on.
             @Override
             public void onClick(View view) {
                 // Create a new intent to open the {@link DemocracyActivity}
@@ -84,20 +84,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Find the View that shows the phrases category
-        TextView phrases = (TextView) findViewById(R.id.phrases);
+        // Find the View that shows the republic category
+        TextView republic = findViewById(R.id.republic);
 
         // Set a click listener on that View
-        phrases.setOnClickListener(new OnClickListener() {
-            // The code in this method will be executed when the phrases category is clicked on.
-            @Override
-            public void onClick(View view) {
-                // Create a new intent to open the {@link RepublicActivity}
-                Intent phrasesIntent = new Intent(MainActivity.this, RepublicActivity.class);
+        // The code in this method will be executed when the republic category is clicked on.
+        republic.setOnClickListener(view -> {
+            // Create a new intent to open the {@link RepublicActivity}
+            Intent phrasesIntent = new Intent(MainActivity.this, RepublicActivity.class);
 
-                // Start the new activity
-                startActivity(phrasesIntent);
-            }
+            // Start the new activity
+            startActivity(phrasesIntent);
         });
     }
 }
