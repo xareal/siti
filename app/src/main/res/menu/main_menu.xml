@@ -5,4 +5,6 @@
     <item android:title="Exit" app:showAsAction="never"
         android:id="@+id/menu_exit"/>
 
+    <item android:title="Settings" app:showAsAction="never"
+        android:id="@+id/menu_setting"/>
 </menu>

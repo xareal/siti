@@ -17,84 +17,111 @@ package com.xar.lore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.xar.lore.groups.DemocracyActivity;
-import com.xar.lore.groups.ElectocracyActivity;
-import com.xar.lore.groups.MonarchyActivity;
-import com.xar.lore.groups.RepublicActivity;
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.xar.lore.MainActivity;
+import com.xar.lore.R;
+import com.xar.lore.message.ChatMessage;
 
 // import android.support.v7.app.AppCompatActivity;
 
+// message
 public class MainActivity extends AppCompatActivity {
+
+    private FirebaseListAdapter<ChatMessage> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_democracy);
 
-        // Set the content of the activity to use the activity_main.xml layout file
-        setContentView(R.layout.activity_main);
+        FloatingActionButton fab =
+                findViewById(R.id.fab);
 
-        // Find the View that shows the electocracy category
-        TextView electocracy = findViewById(R.id.electocracy);
-
-        // Set a click listener on that View
-        electocracy.setOnClickListener(new OnClickListener() {
-            // The code in this method will be executed when the electocracy category is clicked on.
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create a new intent to open the {@link ElectocracyActivity}
-                Intent numbersIntent = new Intent(MainActivity.this, ElectocracyActivity.class);
+                EditText input = findViewById(R.id.input);
 
-                // Start the new activity
-                startActivity(numbersIntent);
+                // Read the input field and push a new instance
+                // of ChatMessage to the Firebase database
+                FirebaseDatabase.getInstance()
+                        .getReference()
+                        .child("chats")
+                        .push()
+                        .setValue(new ChatMessage(input.getText().toString()
+                        ));
+
+                // Clear the input
+                input.setText("");
             }
         });
 
-        // Find the View that shows the monarchy category
-        TextView family = findViewById(R.id.monarchy);
-
-        // Set a click listener on that View
-        // The code in this method will be executed when the monarchy category is clicked on.
-        family.setOnClickListener(view -> {
-            // Create a new intent to open the {@link MonarchyActivity}
-            Intent familyIntent = new Intent(MainActivity.this, MonarchyActivity.class);
-
-            // Start the new activity
-            startActivity(familyIntent);
-        });
-
-        // Find the View that shows the democracy category
-        TextView democracy = findViewById(R.id.democracy);
-
-        // Set a click listener on that View
-        democracy.setOnClickListener(new OnClickListener() {
-            // The code in this method will be executed when the democracy category is clicked on.
-            @Override
-            public void onClick(View view) {
-                // Create a new intent to open the {@link DemocracyActivity}
-                Intent colorsIntent = new Intent(MainActivity.this, DemocracyActivity.class);
-
-                // Start the new activity
-                startActivity(colorsIntent);
-            }
-        });
-
-        // Find the View that shows the republic category
-        TextView republic = findViewById(R.id.republic);
-
-        // Set a click listener on that View
-        // The code in this method will be executed when the republic category is clicked on.
-        republic.setOnClickListener(view -> {
-            // Create a new intent to open the {@link RepublicActivity}
-            Intent phrasesIntent = new Intent(MainActivity.this, RepublicActivity.class);
-
-            // Start the new activity
-            startActivity(phrasesIntent);
-        });
+        // Load chat room contents
+        displayChatMessages();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.menu_setting) {
+            Intent settingIntent = new Intent(MainActivity.this, SettingActivity.class);
+
+            // Start the new activity
+            startActivity(settingIntent);
+        }
+        return true;
+    }
+
+    private void displayChatMessages() {
+        ListView listOfMessages = findViewById(R.id.list_of_messages);
+
+        Query query = FirebaseDatabase.getInstance().getReference().child("chats");
+
+        FirebaseListOptions<ChatMessage> options =
+                new FirebaseListOptions.Builder<ChatMessage>()
+                        .setQuery(query, ChatMessage.class)
+                        .setLayout(R.layout.item_messages)
+                        .setLifecycleOwner(this)   //Added this
+                        .build();
+        adapter = new FirebaseListAdapter<ChatMessage>(options) {
+            @Override
+            protected void populateView(View v, ChatMessage model, int position) {
+                // Get references to the views of message.xml
+                TextView messageText = v.findViewById(R.id.message_text);
+                TextView messageTime = v.findViewById(R.id.message_time);
+
+                // Set their text
+                messageText.setText(model.getMessageText());
+
+                // Format the date before showing it
+                messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
+                        model.getMessageTime()));
+            }
+        };
+
+        listOfMessages.setAdapter(adapter);
+
+    }
+
 }
+
